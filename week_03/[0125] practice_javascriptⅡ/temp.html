@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // onload = html이 렌더링 완료 되면 실행되도록 한다.
+    // script의 위치와 관계 없이, 오류 없이 잘 실행된다.
+    // DOM 객체를 사용할 때는, 가장 먼저 onload를 만들어주고 그 안에 작성하는 것이 정석이다.
+    function loadFunc() {
+      document.querySelector('h1').innerText = 'Hello';
+    }
+    
+    window.onload = loadFunc; // callback
+  </script>
+</head>
+<body>
+  <h1></h1>
+</body>
+</html>
