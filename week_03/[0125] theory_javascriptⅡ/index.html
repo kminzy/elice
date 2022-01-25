@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1><a href="index.html">WEB</a></h1>
+  <nav>
+    <ol>
+      <li><a href="1.html">HTML</a></li>
+      <li><a href="2.html">CSS</a></li>
+      <li><a href="3.html">JavaScript</a></li>
+    </ol>
+  </nav>
+  <h2>Welcome</h2>
+  <p>
+    Hello, WEB
+  </p>
+  <script>
+    let topics = [{
+        id: 1,
+        title: 'html',
+        body: 'html is ...'
+      },
+      {
+        id: 2,
+        title: 'css',
+        body: 'css is ...'
+      },
+      {
+        id: 3,
+        title: 'js',
+        body: 'js is ...'
+      }
+    ];
+
+    // 방법1. 위의 ol 구조를 DOM 객체를 활용해서 동일하게 만들어보기.
+    // 정공법이나, 장황하고 복잡하다.
+    let text = document.createTextNode('HTML');
+    let a = document.createElement('a');
+    a.setAttribute('href', '1.html');
+    let li = document.createElement('li');
+    a.appendChild(text);
+    li.appendChild(a);
+    document.querySelector('ol').appendChild(li);
+
+    // 방법2. 리터럴 표기법을 사용한다.
+    // 이 때, 단순히 변수.innerHTML = `내용`; 형태로 작성하면 기존의 데이터가 모두 날아간다.
+    document.querySelector('ol').innerHTML = document.querySelector('ol').innerHTML + `<li><a href="/read/1">html</li>`;
+
+    function Nav() {
+      let liTag = '';
+      for (let i = 0; i < topics.length; i++) {
+        liTag = liTag + `<li><a href="/read/${topics[i].id}">${topics[i].title}</li>`;
+      }
+      document.querySelector('ol').innerHTML = document.querySelector('ol').innerHTML + liTag;
+    }
+    Nav();
+  </script>
+</body>
+
+</html>
