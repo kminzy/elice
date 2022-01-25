@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Function</h1>
+  <script>
+    document.write('hello world');
+    document.querySelector('body');
+    Math.floor(1.9); // 1
+
+    let 가격 = 10000;
+    let 부가세율 = 0.1;
+    let 세후 = 가격*부가세율;
+    console.log(세후);
+
+    // 가격: 매개변수, parameter, 입력값의 이름
+    // 10000: 인자, argument, 입력값
+    // 가격 * 0.1: 반환값, return value, 출력값
+    function 부가세계산기(가격) {
+      return 가격 * 0.1;
+    }
+    console.log(부가세계산기(10000));
+  </script>
+</body>
+</html>
