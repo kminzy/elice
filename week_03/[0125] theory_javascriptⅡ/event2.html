@@ -18,6 +18,8 @@
     function clickHandler(evt) { // 함수의 파라미터로 event 전달
       alert(evt.target.value);
     }
+    // addEventListener의 두번째 인자같은 경우, 함수를 실행하는 것이 아니라,
+    // 브라우저에게 함수를 전달하는 역할을 하므로 괄호 없이 함수의 이름만 명시해준다.
     document.querySelector('#ae').addEventListener('click', clickHandler);
   </script>
 </body>
