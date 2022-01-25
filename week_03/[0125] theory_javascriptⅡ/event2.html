@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>event2</title>
+</head>
+<body>
+  <!-- 방법1. inline 방식으로 html 태그 안에서 이벤트 걸어주는 방식 -->
+  <input type="button" value="inline" onclick="
+    alert(event.target.value); // event.target = 이벤트가 발생한 대상 객체
+  ">
+
+  <!-- 방법2. JavaScript의 addEventListener를 통해 이벤트를 걸어주는 방식 -->
+  <input type="button" id="ae" value="addEventListener">
+  <script>
+    function clickHandler(evt) { // 함수의 파라미터로 event 전달
+      alert(evt.target.value);
+    }
+    document.querySelector('#ae').addEventListener('click', clickHandler);
+  </script>
+</body>
+</html>
