@@ -1,0 +1,22 @@
+<html>
+
+<body>
+  <script>
+    for (let i = 0; i < 1000; i++) {
+      // onmouseover = CSS의 hover와 같은 역할!
+      // alt키가 눌린 상태에서 배경색 입히고,
+      // ctrl키가 눌린 상태에서 배경색 없앤다.
+      document.write(`<input type = "button" onmouseover="
+        if(event.altKey) {
+          event.target.style.backgroundColor='blue';
+          setTimeout(function(){event.target.style.backgroundColor=''}, 2000);
+        }
+        if(event.ctrlKey) {
+          event.target.style.backgroundColor='';
+        }
+      ">`);
+    }
+  </script>
+</body>
+
+</html>
