@@ -17,17 +17,28 @@
   <article>
   </article>
   <script>
-    let topics = [
-      {id:1, title:"html", body:'html is ..'},
-      {id:2, title:"css", body:'css is ..'},
+    let topics = [{
+        id: 1,
+        title: "html",
+        body: 'html is ..'
+      },
+      {
+        id: 2,
+        title: "css",
+        body: 'css is ..'
+      },
     ]
 
-    let liTag = '';
+    function Nav() {
+      let liTag = '';
 
-    for(let i=0; i<topics.length; i++) {
-      let topic = topics[i];
-      liTag = liTag + `<li>${topic.title}</li>`;
+      for (let i = 0; i < topics.length; i++) {
+        let topic = topics[i];
+        liTag = liTag + `<li><a href="/read/${topic.id}">${topic.title}</a></li>`;
+      }
+      document.querySelector('nav>ol').innerHTML = liTag;
     }
+    Nav();
   </script>
 </body>
 
