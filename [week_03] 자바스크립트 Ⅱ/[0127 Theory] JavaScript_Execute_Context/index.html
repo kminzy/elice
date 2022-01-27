@@ -8,7 +8,11 @@
 
 <body>
   <header>
-    <h1><a href="index.html" onclick="">WEB</a></h1>
+    <h1><a href="index.html" onclick="
+        event.preventDefault();
+        mode = 'WELCOME';
+        Article(); // 함수를 다시 호출해서 udpate!
+      ">WEB</a></h1>
   </header>
   <nav>
     <ol>
@@ -17,6 +21,9 @@
   <article>
   </article>
   <script>
+    let selectedId = 1;
+    let mode = 'READ';
+
     let topics = [{
         id: 1,
         title: "html",
@@ -29,12 +36,36 @@
       },
     ]
 
+    function Article() {
+      let articleTag = '';
+
+      if (mode === 'WELCOME') {
+        articleTag = `<h2>Welcome</h2>Hello WEB`;
+      } else if (mode === 'READ') {
+        mode === 'WELCOME';
+        for (let i = 0; i < topics.length; i++) {
+          let t = topics[i];
+
+          if (topics[i].id === selectedId) {
+            articleTag = `<h2>${t.title}</h2>${t.body}`;
+          }
+        }
+      }
+      document.querySelector('article').innerHTML = articleTag;
+    }
+    Article();
+
     function Nav() {
       let liTag = '';
 
       for (let i = 0; i < topics.length; i++) {
         let topic = topics[i];
-        liTag = liTag + `<li><a href="/read/${topic.id}">${topic.title}</a></li>`;
+        liTag = liTag + `<li><a href="/read/${topic.id}" onclick="
+            event.preventDefault();
+            mode = 'READ';
+            selectedId = ${topic.id};
+            Article();
+          ">${topic.title}</a></li>`;
       }
       document.querySelector('nav>ol').innerHTML = liTag;
     }
