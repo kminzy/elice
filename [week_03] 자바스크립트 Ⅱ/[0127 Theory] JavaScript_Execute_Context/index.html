@@ -14,15 +14,34 @@
         Article(); // 함수를 다시 호출해서 udpate!
       ">WEB</a></h1>
   </header>
+
   <nav>
-    <ol>
-    </ol>
+    <ol></ol>
   </nav>
-  <article>
-  </article>
+
+  <article></article>
+
+  <ul>
+    <li>
+      <a href="/create" onclick="
+        event.preventDefault();
+        mode = 'CREATE';
+        Article();
+      ">create</a>
+    </li>
+    <li>
+      <a href="/update" onclick="
+        event.preventDefault();
+        mode = 'UPDATE';
+        Article();
+      ">update</a>
+    </li>
+  </ul>
+
   <script>
     let selectedId = 1;
-    let mode = 'READ';
+    let mode = 'CREATE';
+    let nextId = 3;
 
     let topics = [{
         id: 1,
@@ -42,7 +61,6 @@
       if (mode === 'WELCOME') {
         articleTag = `<h2>Welcome</h2>Hello WEB`;
       } else if (mode === 'READ') {
-        mode === 'WELCOME';
         for (let i = 0; i < topics.length; i++) {
           let t = topics[i];
 
@@ -50,6 +68,27 @@
             articleTag = `<h2>${t.title}</h2>${t.body}`;
           }
         }
+      } else if (mode === 'CREATE') {
+        articleTag = `
+          <h2>Create</h2>
+          <form onsubmit="
+            event.preventDefault();
+            let title = event.target.title.value;
+            let body = event.target.body.value;
+            topics.push({id:nextId, title:title, body:body});
+            Nav();
+            mode = 'READ';
+            selectedId = nextId;
+            Article();
+            nextId = nextId + 1;
+          ">
+            <p><input type="text" name="title" placeholder="title"></p>
+            <p><textarea name="body" placeholder="body"></textarea></p>
+            <p><input type="submit" value="Create"></p>
+          </form>
+        `;
+      } else if (mode === 'UPDATE') {
+        articleTag = `<h2>Update</h2>`;
       }
       document.querySelector('article').innerHTML = articleTag;
     }
