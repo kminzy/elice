@@ -14,6 +14,14 @@
 
 [행렬의 덧셈](https://github.com/kminzy/codingtest/blob/main/minzy/%ED%96%89%EB%A0%AC%EC%9D%98%EB%8D%A7%EC%85%88.py)
 
+[핸드폰 번호 가리기](https://github.com/kminzy/codingtest/blob/main/minzy/%ED%95%B8%EB%93%9C%ED%8F%B0%EB%B2%88%ED%98%B8%EA%B0%80%EB%A6%AC%EA%B8%B0.py)
+
+[하샤드 수](https://github.com/kminzy/codingtest/blob/main/minzy/%ED%95%98%EC%83%A4%EB%93%9C%EC%88%98.py)
+
+[평균 구하기](https://github.com/kminzy/codingtest/blob/main/minzy/%ED%8F%89%EA%B7%A0%20%EA%B5%AC%ED%95%98%EA%B8%B0.py)
+
+[콜라츠 추측](https://github.com/kminzy/codingtest/blob/main/minzy/%EC%BD%9C%EB%9D%BC%EC%B8%A0%20%EC%B6%94%EC%B8%A1.py)
+
 <br><br>
 
 ## 🎯 **백엔드**
