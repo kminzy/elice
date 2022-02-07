@@ -15,4 +15,5 @@
 |[1] 1/11~1/15|- HTML/CSS 기초</br>- 웹 사이트 제작</br>- Git|
 |[2] 1/18~1/22|- 자바스크립트 기초 문법</br>- 자바스크립트 문법 활용</br>- 자기소개 페이지 제작하기|📃 **과제**</br>[자기소개 페이지](http://kminzy.kdt-gitlab.elice.io/produce-myself/)
 |[3] 1/25~1/29|- DOM과 이벤트</br>- 자바스크립트 동작 원리</br>- 자바스크립트 변수와 객체</br>- 실행 컨텍스트와 스코프||[3주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_03%5D%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%E2%85%A1/Study.md)|
-|[4] 1/31~2/4 (방학)|- 3주차 학습 내용 복습|[복습](https://github.com/kminzy/elice/tree/main/%5Bweek_04%5D%20%EB%B0%A9%ED%95%99)|[4주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_04%5D%20%EB%B0%A9%ED%95%99/Study.md)|
+|[4] 2/1~2/5 (방학)|- 3주차 학습 내용 복습|[복습](https://github.com/kminzy/elice/tree/main/%5Bweek_04%5D%20%EB%B0%A9%ED%95%99)|[4주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_04%5D%20%EB%B0%A9%ED%95%99/Study.md)|
+|[5] 2/8~2/12|||[5주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_05%5D%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%E2%85%A2/Study.md)|
