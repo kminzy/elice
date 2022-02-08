@@ -9,11 +9,7 @@
 </head>
 
 <body>
-  <nav>
-    <ul>
 
-    </ul>
-  </nav>
   <input type="button" value="GET" onclick="
     fetch('http://localhost:3000/topics') // JSON데이터 타입을 JS에서 사용할 수 있도록 배열, 객체 등의 형태로 convert
     .then(response => response.json())
@@ -22,12 +18,54 @@
       let text = '';
 
       data.forEach(item => {
+        // console.log(item);
         text = text + `<li>${item.title}</li>`;
       });
-      
+
       document.querySelector('nav > ul').innerHTML = text;
     });
   ">
+
+  <input type="button" value="GET2" onclick="
+    fetch('https://jsonplaceholder.typicode.com/posts') // JSON데이터 타입을 JS에서 사용할 수 있도록 배열, 객체 등의 형태로 convert
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      let text = '';
+
+      data.forEach(item => {
+        // console.log(item);
+        text = text + `<li>${item.title}</li>`;
+      });
+
+      document.querySelector('nav > ul').innerHTML = text;
+    });
+  ">
+
+  <input type="button" value="CREATE" onclick="
+    fetch('http://localhost:3000/topics', { // fetch는 리턴값이 Promise
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({title: prompt('🙄 title?'), body: prompt('😉 body?')}) // JSON.stringify를 통해 JS 안에서만 유효한 타입인 객체형태에서 JSON 포맷으로 변경
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // let text = '';
+    
+      // for(let i = 0; i<data.length; i++) {
+      //   text = text + `<li>${data[i].title}</li>`;
+      // }
+    });
+  ">
+
+  <nav>
+    <ul>
+
+    </ul>
+  </nav>
 </body>
 
 </html>
