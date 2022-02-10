@@ -20,28 +20,40 @@
   </nav>
   <article>
   </article>
-  <ul>
-    <li>
-      <a href="/create" onclick="
-        event.preventDefault();
-        mode = 'CREATE';
-        Article();
-      ">create</a>
-    </li>
-    <li>
-      <a href="/update" onclick="
-        event.preventDefault();
-        mode = 'UPDATE';
-        Article();
-      ">Update</a>
-    </li>
-    <li>
-      <input type="button" value="delete" onclick="deleteHandler();">
-    </li>
+  <ul id="control">
+
   </ul>
   <script>
     let selectedId = 1;
     let mode = 'CREATE';
+
+    function Control() {
+      let contextUI = `
+      <li>
+        <a href="/create" onclick="
+          event.preventDefault();
+          mode = 'CREATE';
+          Article();
+        ">Create</a>
+      </li>
+      `;
+      if (mode === 'READ') {
+        contextUI += `
+        <li>
+          <a href="/update" onclick="
+            event.preventDefault();
+            mode = 'UPDATE';
+            Article();
+          ">Update</a>
+        </li>
+        <li>
+          <input type="button" value="Delete" onclick="deleteHandler();">
+        </li>
+        `;
+      }
+      document.querySelector('#control').innerHTML = contextUI;
+    }
+    Control();
 
     async function createHandler(event) {
       event.preventDefault();
@@ -133,6 +145,7 @@
         `;
       }
       document.querySelector('article').innerHTML = articleTag;
+      Control();
     }
     Article();
 
