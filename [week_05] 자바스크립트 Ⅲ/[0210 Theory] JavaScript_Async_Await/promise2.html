@@ -1,0 +1,29 @@
+<script>
+  function timer(time) {
+    return new Promise(function (resolve, reject) {
+      setTimeout(() => {
+        resolve(time);
+      }, time);
+    });
+  }
+
+  // timer(Math.random() * 10000).then(function (time) {
+  //   console.log('time:' + time);
+  // });
+  // timer(Math.random() * 10000).then(function (time) {
+  //   console.log('time:' + time);
+  // });
+  // timer(Math.random() * 10000).then(function (time) {
+  //   console.log('time:' + time);
+  // });
+
+  Promise.all([timer(Math.random() * 3000), timer(Math.random() * 3000), timer(Math.random() * 3000)])
+    .then(function (result) {
+      console.log('result:', result);
+    });
+
+  Promise.race([timer(Math.random() * 3000), timer(Math.random() * 3000), timer(Math.random() * 3000)])
+    .then(function (result) {
+      console.log('result:', result);
+    });
+</script>

@@ -6,6 +6,44 @@
 <br><br>
 
 ## Promise
+### 정리 1
+- Promise는 new Promise로 만든다.
+
+- Promise 함수는 콜백 함수를 입력받는다. (executor)
+
+- 그 콜백 함수는 2개의 파라미터가 있다. (resolve, reject)
+
+- 첫 번째 파라미터는 성공할 때 호출할 함수이다. (resolve)
+
+- 첫 번쨰 파라미터 함수는 return값을 입력받는다. ex) resolve('success');
+```js
+let timer = new Promise(function(resolve, reject){
+  setTimeout(() => {
+    resolve('success');
+  }, 1000);
+});
+
+console.log(timer); // Promise{<fulfilled>: 'success'}
+
+timer.then(function(time) {
+  console.log('time:' + time); // time:success
+});
+```
+```js
+function timer(){
+  return new Promise(function(resolve, reject){
+    setTimeout(() => {
+      resolve('success');
+    }, 1000);
+});
+}
+
+timer().then(function(time) {
+  console.log('time:' + time); // time:success
+});
+```
+
+### 정리 2
 - fetch는 통신을 하며, 어떤 Resource를 넣어주면 Promise를 리턴한다.
 
 - promise는 `then`을 호출하면 된다.
