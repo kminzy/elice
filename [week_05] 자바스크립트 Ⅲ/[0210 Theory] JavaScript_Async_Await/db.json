@@ -6,9 +6,14 @@
       "id": 1
     },
     {
-      "title": "title",
-      "body": "body",
+      "title": "react",
+      "body": "react is ...",
       "id": 2
+    },
+    {
+      "title": "css",
+      "body": "css is ...",
+      "id": 3
     }
   ]
 }
