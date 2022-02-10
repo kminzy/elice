@@ -1,0 +1,12 @@
+<script>
+  async function asyncTest() {
+    return 'Hello';
+  }
+
+  asyncTest().then(v => console.log(v));
+
+  function promiseTest() {
+    return new Promise(resolve => resolve('hello'));
+  }
+  promiseTest().then(v => console.log(v));
+</script>
