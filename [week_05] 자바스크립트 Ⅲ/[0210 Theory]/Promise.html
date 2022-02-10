@@ -1,0 +1,63 @@
+<script>
+  function timer(time) {
+    return new Promise(function (resolve) {
+      setTimeout(function () {
+        resolve(time);
+      }, time);
+    });
+  }
+  // console.time('timer');
+  // timer(1000).then(function(time){
+  //     console.log('time:'+time);
+  //     timer(time+1000).then(function(time){
+  //         console.log('time:'+time);
+  //         timer(time+1000).then(function(time){
+  //             console.log('time:'+time);
+  //             console.timeEnd('timer');
+  //         });
+  //     });
+  // });
+  /*
+  console.time('timer');
+  timer(1000)
+      .then(function(time){
+          console.log('time:'+time);
+          return timer(time+1000);
+      })
+      .then(function(time){
+          console.log('time:'+time);
+          return timer(time+1000);
+      })
+      .then(function(time){
+          console.log('time:'+time);
+          console.timeEnd('timer');
+      });
+  */
+  async function run() { // async 함수는 Promise를 리턴한다.
+    console.time('timer');
+    let time = await timer(1000); // await 뒤의 함수가 끝날 때까지 기다려라 -> 리턴값을 time에 넣어준다.
+    console.log('time:' + time);
+    time = await timer(time + 1000);
+    console.log('time:' + time);
+    time = await timer(time + 1000);
+    console.log('time:' + time);
+    console.timeEnd('timer');
+  }
+
+  /*
+  console.log('start');
+  await run(); // 비동기 처리 되므로, 마지막에 실행된다.
+  console.log('end');
+  */
+
+  async function run2() {
+    console.log('start');
+    await run();
+    console.log('end');
+  }
+
+  console.log('parent start');
+  run2().then(function () {
+    console.log('parent end');
+  });
+</script>
