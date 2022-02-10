@@ -35,6 +35,9 @@
         Article();
       ">Update</a>
     </li>
+    <li>
+      <input type="button" value="delete" onclick="deleteHandler();">
+    </li>
   </ul>
   <script>
     let selectedId = 1;
@@ -85,6 +88,18 @@
       Nav();
       mode = 'READ';
       selectedId = topic.id;
+      Article();
+    }
+
+    async function deleteHandler(event) {
+      // topics.push({id:nextId, title:title, body:body});
+      const response = await fetch('http://localhost:3000/topics/' + selectedId, {
+        method: 'DELETE'
+      });
+      const topic = await response.json();
+
+      Nav();
+      mode = 'WELCOME';
       Article();
     }
 
