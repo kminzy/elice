@@ -52,6 +52,30 @@
       }
     ]
 
+    async function createHandler(event) {
+      event.preventDefault();
+      let title = event.target.title.value;
+      let body = event.target.body.value;
+
+      // topics.push({id:nextId, title:title, body:body});
+      const response = await fetch('http://localhost:3000/topics', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: title,
+          body: body
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const topic = await response.json();
+
+      Nav();
+      mode = 'READ';
+      selectedId = topic.id;
+      Article();
+    }
+
     async function Article() {
       let articleTag = '';
       if (mode === 'WELCOME') {
@@ -63,17 +87,7 @@
       } else if (mode === 'CREATE') {
         articleTag = `
           <h2>Create</h2>
-          <form onsubmit="
-            event.preventDefault();
-            let title = event.target.title.value;
-            let body = event.target.body.value;
-            topics.push({id:nextId, title:title, body:body});
-            Nav();
-            mode = 'READ';
-            selectedId = nextId;
-            Article();
-            nextId = nextId + 1;
-          ">
+          <form onsubmit="createHandler(event);">
             <p><input type="text" placeholder="title" name="title"></p>
             <p><textarea placeholder="body" name="body"></textarea></p>
             <p><input type="submit" value="Create"></p>
