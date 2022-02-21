@@ -5,6 +5,45 @@ const app = express()
 
 const indexRoute = require('./routes/index.js')
 
+
+
+
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://127.0.0.1:27017/nodejs', { // 결과 => Promise
+  useNewUrlParser: true // 주소를 처리해주는 모듈 on
+}).then(() => {
+  console.log('Connected to MongoDB...')
+}).catch((err) => {
+  console.log(err.message)
+})
+
+const UserSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  saveDate: {
+    type: Date,
+    default: Date.now,
+  }
+})
+
+const User = mongoose.model('User', UserSchema)
+
+const me = new User({
+  name: "gil dong",
+  age: 20
+})
+
+me.save()
+  .then(() => {
+    console.log(me)
+  }).catch((err) => {
+    console.log("ERROR : ", err)
+  })
+
+
+
+
 const pickMyFood = () => {
   const food = ['돈까스', '김밥', '초밥', '떡볶이', '샌드위치', '파스타', '부침개', '칼국수', '피자', '치킨', '볶음밥', '짜장&탕수육', '짬뽕&탕수육', '콜라 비빔밥', '오므라이스']
   let idx = Math.floor(Math.random() * food.length)
