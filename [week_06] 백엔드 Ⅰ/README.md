@@ -9,8 +9,8 @@ const app = express() // express 기능을 하는 객체 생성
 app.get('/', (req, res) => { // default 주소, 접속 시 서비스할 내용
   res.send('Hello, world')
 })
-// req: request(요청), 사용자의 브라우저 정보, 쿼리(주소창), 로그인정보
-// res: response(응답), 사이트 내용 html
+// req: request(요청), 사용자의 브라우저 정보, 쿼리(주소창), 로그인정보 => Input
+// res: response(응답), 사이트 내용 html => Output
 
 app.listen(3000, () => {
   console.log('3000번 포트에서 웹서버를 실행중입니다...')
@@ -36,3 +36,31 @@ app.listen(3000, () => {
 - Document는 JSON 형식으로, key와 value로 이루어진 여러 개의 Field들로 이루어져 있다.
 - 여러 종류의 DB 중, MongoDB의 Document 형식이 JSON으로 되어 있다 보니 Node.js와 궁합이 잘 맞는다.
 - mongoose: MongoDB와 Express를 잘 연결할 수 이게 해주는 함수들의 집합
+
+<br>
+
+## 4. req.params vs req.query
+```js
+app.get('/data/:search', (req, res) => {
+  console.log(req.params.search);
+
+  res.send({
+    status: "succ",
+  });
+});
+```
+🔹 params는 '/~~/:parameter' 형태로 작성할 때 사용, 이 때 parameter 부분이 변수가 된다.
+```js
+app.get('/search', (req, res) => {
+  const reqQuery = req.query;
+  const searchStr = req.query.name;
+  console.log(reqQuery);
+
+  res.send({
+    input: reqQuery.name,
+  });
+});
+```
+🔹 query는 url 뒤의 ?과 & 형태로 들어오는 변수를 받아올 때 사용
+
+예를 들어, `http://~~~/search?name=Hi&name2=qwer`라는 url이 있다면, req.query.name을 통해 'Hi'를, req.query.name2를 통해 'qwer'를 받아올 수 있다.
