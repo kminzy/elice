@@ -39,7 +39,7 @@ app.listen(3000, () => {
 
 <br>
 
-## 4. req.params vs req.query
+## 4. GET : req.params vs req.query
 ```js
 app.get('/data/:search', (req, res) => {
   console.log(req.params.search);
@@ -64,3 +64,9 @@ app.get('/search', (req, res) => {
 🔹 query는 url 뒤의 ?과 & 형태로 들어오는 변수를 받아올 때 사용
 
 예를 들어, `http://~~~/search?name=Hi&name2=qwer`라는 url이 있다면, req.query.name을 통해 'Hi'를, req.query.name2를 통해 'qwer'를 받아올 수 있다.
+
+<br>
+
+## 5. POST : body
+- POST는 GET과 달리, 배열 등의 다양한 타입의 데이터를 body에 담아 전송할 수 있다.
+- 로그인 같은 경우에도 보통 POST로 구현하게 된다.

@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const data = require('./movieData');
+const path = require('path');
 
 function movieSearch(name) {
   return data.movieData.filter(v => {
@@ -15,6 +16,10 @@ app.get('/search', (req, res) => {
   res.send({
     result,
   });
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/search2/:name', (req, res) => {
