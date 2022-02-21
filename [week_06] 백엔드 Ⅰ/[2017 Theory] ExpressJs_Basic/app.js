@@ -36,6 +36,9 @@ const randIdx = function(arr) {
   return Math.floor(Math.random() * arr.length)
 }
 
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'pug')
+
 app.use('/', indexRoute)
 
 // app.get('/', (req, res) => {
