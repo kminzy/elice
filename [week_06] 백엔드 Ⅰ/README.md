@@ -71,3 +71,17 @@ app.get('/search', (req, res) => {
 - POST는 GET과 달리, 배열 등의 다양한 타입의 데이터를 body에 담아 전송할 수 있다.
 - 로그인 같은 경우에도 보통 POST로 구현하게 된다.
 - 페이지 변환 없는 fetch 방식은 json 형태로만 받는다.
+
+<br>
+
+## 6. mongoDB find vs findOne
+- mongoDB find == 배열 메소드 filter와 같음 => 배열을 반환
+- mongoDB findOne == 배열 메소드 find => 요소를 반환
+
+<br>
+
+## 7. Middleware
+- Client가 Request, Server가 Response
+- Middleware는 Request 중간에 연결다리를 놓아주는 것
+- 중간에서 Request를 변형할 수 있고, 그것을 Server에게 다시 돌려준다.
+- 즉, Request가 Middleware를 거쳐서 변형되고 Server에게 전달되는 것
