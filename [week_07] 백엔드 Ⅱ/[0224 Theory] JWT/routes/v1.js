@@ -17,8 +17,15 @@ router.get('/token', async (req, res) => {
             expresIn: '60m',
             issuer: 'mySNS'
         });
+        req.session.jwt = token;
+        return res.json({
+            code: 200,
+            message: "토큰이 발급되었습니다.",
+            token,
+        });
     } catch(err) {
-        
+        console.error(err);
+        return res.status(500);
     }
 });
 
