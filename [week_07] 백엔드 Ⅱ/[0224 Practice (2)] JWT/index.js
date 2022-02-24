@@ -75,4 +75,4 @@ app.post("/data", verifyToken, (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log("3000 port listen"));
+app.listen(process.env.PORT || 3000, () => console.log("3000 port listen"));
