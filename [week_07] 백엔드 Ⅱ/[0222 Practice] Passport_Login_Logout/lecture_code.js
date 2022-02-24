@@ -8,7 +8,7 @@ const path = require("path");
 // admin:1234
 
 mongoose
-  .connect("mongodb+srv://admin:1234@cluster0.yfbio.mongodb.net/elice")
+  .connect("mongodb+srv://<username>:<password>@cluster0.yfbio.mongodb.net/elice")
   .then(async () => {
     try {
       const user = new User({

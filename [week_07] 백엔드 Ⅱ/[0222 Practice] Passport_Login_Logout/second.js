@@ -7,7 +7,7 @@ const path = require('path');
 
 
 mongoose
-  .connect("mongodb+srv://admin:1234@cluster0.p1xn6.mongodb.net/elice")
+  .connect("mongodb+srv://<username>:<password>@cluster0.p1xn6.mongodb.net/elice")
   .then(async () => {
     console.log("DB 연결 성공");
     try {
