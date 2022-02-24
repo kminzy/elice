@@ -1,33 +1,39 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
-const {
-    verifyToken
-} = require('./middleware.js');
+const { verifyToken } = require('./middleware.js');
 
 const router = express.Router();
 
 router.get('/token', async (req, res) => {
     try {
-        const token = jwt.sign({ // ? jwt.sign() = 원하는 내용 심기
-            id: 'SNS user',
-            nick: 'consumer00',
-            grade: 'premium',
+        const token = jwt.sign({
+            id: '내sns사용자',
+            nick: 'consumer88',
+            grade: 'premium'
         }, process.env.JWT_SECRET, {
-            expresIn: '60m',
+            expiresIn: '60m',
             issuer: 'mySNS'
-        });
-        req.session.jwt = token;
+        })
+        req.session.jwt = token
         return res.json({
             code: 200,
-            message: "토큰이 발급되었습니다.",
-            token,
-        });
-    } catch(err) {
-        console.error(err);
-        return res.status(500);
+            message: '토큰이 발급되었습니다',
+            token
+        })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).json({
+            code: 500,
+            message: '서버 에러'
+        })
     }
+})
+
+
+router.get('/test', verifyToken, (req, res) => {
+    res.json(req.decoded);
 });
 
 
-router.get('/test', );
+module.exports = router;
