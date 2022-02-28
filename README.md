@@ -18,4 +18,5 @@
 |[4] 2/1~2/5 (방학)|- 3주차 학습 내용 복습|[복습](https://github.com/kminzy/elice/tree/main/%5Bweek_04%5D%20%EB%B0%A9%ED%95%99)|[4주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_04%5D%20%EB%B0%A9%ED%95%99/Study.md)|
 |[5] 2/8~2/12|- 자바스크립트 비동기 통신<br>- Promise \| Async/Await<br>- REST API|[온라인 파이썬](https://github.com/kminzy/elice/blob/main/%5Bweek_05%5D%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%E2%85%A2/%5B0210%20Practice%5D%20Online_Python_with_Async_Function/index.html)|[5주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_05%5D%20%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%E2%85%A2/Study.md)|
 |[6] 2/15~2/19|- Node.js & Express.js<br>- REST API<br>- MongoDB||[6주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_06%5D%20%EB%B0%B1%EC%97%94%EB%93%9C%20%E2%85%A0/Study.md)|
-|[7] 2/22~2/26|- MongoDB<br>- 회원가입 및 로그인 기능<br>- JWT||[7주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_07%5D%20%EB%B0%B1%EC%97%94%EB%93%9C%20%E2%85%A1/Study.md)|
+|[7] 2/22~2/26|- MongoDB<br>- 회원가입 및 로그인 기능 구현<br>- Passport와 Session, 그리고 JWT||[7주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_07%5D%20%EB%B0%B1%EC%97%94%EB%93%9C%20%E2%85%A1/Study.md)|
+|[8] 3/1~3/5|- React.js의 기초<br>- JSX, Components, Props, State, 이벤트 처리<br>- Hook, Routing||[8주차 스터디]()|
