@@ -85,9 +85,6 @@ function App() {
 
   return (
     <div className="App">
-      {/** a tag */}
-      {/** div tag */}
-      {/** h1 tag */}
       <Todo />
     </div>
   );
