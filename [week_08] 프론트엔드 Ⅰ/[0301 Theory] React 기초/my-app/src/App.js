@@ -1,10 +1,10 @@
 import "./App.css";
 
-function HeaderTag() {
+function HeaderTag({ title }) {
   return (
     <header>
       <h1>
-        <a href="/">WEB</a>
+        <a href="/">{title}</a>
       </h1>
     </header>
   );
@@ -28,11 +28,11 @@ function Nav() {
   );
 }
 
-function Article() {
+function Article({ title, body }) {
   return (
     <article>
-      <h2>WELCOME</h2>
-      Hello, React!!!
+      <h2>{title}</h2>
+      {body}
     </article>
   );
 }
@@ -40,9 +40,9 @@ function Article() {
 function App() {
   return (
     <div>
-      <HeaderTag></HeaderTag>
+      <HeaderTag title="React" body="this is body"></HeaderTag>
       <Nav />
-      <Article />
+      <Article title="Welcome" body="Hello, React 🎉" />
     </div>
   );
 }
