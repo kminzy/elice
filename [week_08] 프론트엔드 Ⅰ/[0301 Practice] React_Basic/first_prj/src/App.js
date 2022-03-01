@@ -14,38 +14,81 @@ function Title({ value, className }) {
   return <h1 className={className}>{value}</h1>; // 실제 렌더링 되는 부분
 }
 
-function App() {
-  const [count, setCount] = useState(0); // count = 100
-
-  // count = 100
-  // count = "Hello World";
-
-  const [text, setText] = useState(""); //
-
-  // setState 값을 덮어씌우는 방식.
-
-  // props, state << 절대 읽기 값은 바꾸면 안됨.
-
+function TodoList({ data, setArr }) {
   return (
-    <div className="App">
+    <div>
+      {data.map((v) => (
+        <>
+          <li key={`${v}-key`}>{v}</li>
+          <button
+            onClick={() => {
+              setArr(data.filter((f) => f !== v));
+            }}
+          >
+            삭제
+          </button>
+        </>
+      ))}
+    </div>
+  );
+}
+
+// ! 자식 컴포넌트에서 부모 컴포넌트 state를 바꾸려면 항상 props로 관리를 해야한다.
+function TodoInput({ text, setText, arr, setArr }) {
+  return (
+    <>
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)} // ? setText에 의해 렌더링이 발생
       />
-      <button>추가</button>
-
-      <p>{count}</p>
       <button
         onClick={() => {
-          setCount(count + 1);
+          // * React : map 새로운 배열 반환, reduce, filter 다 새로운 배열 반환
+          // * spread 연산자 역시 새로운 배열 반환
+          // * setState 할때는 항상 deep copy
+          //   const newArr = arr.slice(); // arr을 깊은 복사 (= [...arr])
+          //   newArr.push(text);
+          //   setArr(newArr);
+          setArr([...arr, text]); // ! 자기 자신한테 연관되는 메소드는 쓰지 말자. ex) push
+          setText("");
         }}
       >
-        Click Me
+        추가
       </button>
+    </>
+  );
+}
+
+function Todo() {
+  const [text, setText] = useState(""); //
+  const [arr, setArr] = useState([]);
+
+  return (
+    <>
+      <TodoInput text={text} setText={setText} arr={arr} setArr={setArr} />
+      {/**
+       * 자식의 자식의 자식에서 증조 컴포넌트 바꾸려면 계속 props 전달 << React의 최대 단점
+       * 이건 해결하려면 어렵기 때문에 Context, Redux 같은 전역 상태 라이브러리를 써야한다.
+       */}
+      <TodoList data={arr} setArr={setArr} />
+    </>
+  );
+}
+
+function App() {
+  // count = 100
+  // count = "Hello World";
+
+  // setState 값을 덮어씌우는 방식.
+  // props, state << 절대 읽기 값은 바꾸면 안됨.
+
+  return (
+    <div className="App">
       {/** a tag */}
       {/** div tag */}
       {/** h1 tag */}
+      <Todo />
     </div>
   );
 }
