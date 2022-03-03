@@ -15,7 +15,7 @@ function App() {
       {!toggle ? <Comp /> : <Comp2 />}
       {/* 조건부 렌더링 2 */}
       {/* {!toggle && <Comp />} */}
-      <Timer />
+      <Timer sec={5} />
     </div>
   );
 }
