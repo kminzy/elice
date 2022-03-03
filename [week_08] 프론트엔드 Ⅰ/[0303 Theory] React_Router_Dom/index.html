@@ -1,0 +1,38 @@
+<html>
+
+<body>
+    <header>
+        <h1>
+            <a href="/" onclick="
+                event.preventDefault();
+                history.pushState({},'','/'); 
+                document.querySelector('article').innerHTML = `<h2>Welcome</h2>Hello, WEB!`;
+            ">WEB</a>
+        </h1>
+    </header>
+    <nav>
+        <ol>
+            <li>
+                <a href="/read/1" onclick="
+                    event.preventDefault();
+                    history.pushState({}, '', '/read/1');    
+                    document.querySelector('article').innerHTML = `<h2>HTML</h2>HTML is HyperText Markup Language.`;
+                ">html</a>
+            </li>
+        </ol>
+    </nav>
+    <article></article>
+    <script>
+        if (location.pathname === "/") {
+            document.querySelector(
+                "article"
+            ).innerHTML = `<h2>Welcome</h2>Hello, WEB!`;
+        } else if (location.pathname === "/read/1") {
+            document.querySelector(
+                "article"
+            ).innerHTML = `<h2>HTML</h2>HTML is HyperText Markup Language.`;
+        }
+    </script>
+</body>
+
+</html>
