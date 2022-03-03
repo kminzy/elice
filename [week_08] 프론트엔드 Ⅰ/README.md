@@ -155,3 +155,127 @@ console.log(a, b); // [1, 2, 3] [1, 2, 3, 4]
 
 prop은 읽기 전용이고, state는 쓰기가 가능하다.
 prop과 state가 바뀌면 컴포넌트는 다시 렌더링된다.
+
+## 6. export와 experts default의 차이점
+
+```js
+export function Comp() {
+  return <h1>Hello World</h1>;
+}
+
+import { Comp } from "./components/Comp";
+
+// -----------------------------------------------------------
+
+function MainComp() {
+  return <h1>Main Compoenent</h1>;
+}
+
+export default MainComp;
+
+import MainComp from "./components/MainComp";
+```
+
+`한 가지`만 밖으로 뺄 때는 `export default` => import 할 때는 중괄호 없이 이름만 명시
+
+`여러 개`를 밖으로 뺼 때는 `default` => import 할 때는 중괄호로 묶어서 명시
+
+메인이 되는 애만 export default로 빼주고, 나머지들은 default로 빼주면 된다.
+
+<br />
+
+## 7. 간단한 렌더링 최적화
+
+```js
+function App() {
+  // const [count, setCount] = useState(0);
+  // const [count2, setCount2] = useState(0);
+
+  const [counts, setCounts] = useState({
+    count: 0,
+    count2: 0,
+  });
+
+  return (
+    <div className="App">
+      <Comp></Comp>
+      <button
+        onClick={() => {
+          // setCount(count + 1); // 여기서 렌더링 한번 발생
+          // setCount2(count2 + 1); // 여기서 렌더링 한번 더 발생
+          setCounts({ count: counts.count + 1, count2: counts.count2 + 1 }); // 렌더링이 한 번만 발생
+        }}
+      >
+        Counter
+      </button>
+      <p>
+        {counts.count} {counts.count2}
+      </p>
+    </div>
+  );
+}
+```
+
+<br />
+
+## 8. useEffect
+
+- 컴포넌트가 생성됐을 때 시점
+- 컴포넌트가 제거됐을 떄 시점
+- 컴포넌트에서 변수가 변경됐을 때 시점
+  을 가지고 있다.
+
+```js
+useEffect(() => {
+  // 최초 1번 실행되어야하는 코드들
+  // 생성 됐을 때만 실행됨
+  console.log("컴포넌트 생성됨");
+  setInterval(() => {
+    console.log("타이머 실행 1");
+  }, 1000);
+}, []); // 두 번째 인자가 빈 배열일 때 => 마운트 ! ! !
+```
+
+### 8-1. 마운트를 활용한 조건부 렌더링
+
+```js
+import { useEffect } from "react";
+
+export function Comp() {
+  useEffect(() => {
+    console.log("First child mount");
+
+    return () => {
+      // 언마운트 시점
+      console.log("First child has unmount...");
+    };
+  }, []);
+  return <h1>First Comp</h1>;
+}
+
+export function Comp2() {
+  useEffect(() => {
+    console.log("Second child mount");
+
+    return () => {
+      // 언마운트 시점
+      console.log("Second child has unmount...");
+    };
+  }, []);
+  return <h1>Second Comp</h1>;
+}
+
+// ----------------------------------------------------------
+
+function App() {
+  const [toggle, setToggle] = useState(false);
+
+  return (
+    <div className="App">
+      <button onClick={() => setToggle(!toggle)}>Click Me</button>
+      {!toggle ? <Comp /> : <Comp2 />}
+      {/* {!toggle && <Comp />} */}
+    </div>
+  );
+}
+```
