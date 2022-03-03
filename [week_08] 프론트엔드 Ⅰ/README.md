@@ -93,3 +93,49 @@ function App() {
 ## 3. Component 만들기
 
 컴포넌트는 React에서 페이지를 구성하는 최소 단위이다. `사용자 정의 태그`라고 이해하면 된다. 리액트의 각 기능들은 최대한 작게 쪼개어 각각의 컴포넌트로 구성하는 것이 좋다.
+
+<br />
+
+## 4. React의 Router
+
+Route에 Element로 전달된 컴포넌트는 path의 가변 인자를 획득할 수 있다 by useParams Hook
+
+```js
+import { Link, Routes, Route, useParams } from "react-router-dom";
+
+function Nav(props) {
+  let lis = [];
+  for (let i = 0; i < props.topics.length; i++) {
+    let t = props.topics[i];
+    lis.push(
+      <li key={t.id}>
+        <Link to={"/read/" + t.id}>{t.title}</Link>
+      </li>
+    );
+  }
+
+  function Read() {
+  const params = useParams();
+  console.log("useParams: ", params);
+  return <Article title="Read" body="Hello, Read"></Article>;
+}
+
+function App() {
+  console.log("App render");
+
+  let topics = [
+    { id: 1, title: "html", body: "html is ..." },
+    { id: 2, title: "css", body: "css is ..." },
+    { id: 3, title: "js", body: "js is ..." },
+  ];
+
+  return (
+    <>
+      <Routes>
+        <Route path="/read/:id" element={<Read></Read>}></Route>
+      </Routes>
+    </>
+  );
+}
+
+```
