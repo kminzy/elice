@@ -39,25 +39,67 @@ function Nav(props) {
   );
 }
 
-function Read({ topics }) {
+function Read(props) {
   const params = useParams();
   const id = Number(params.id);
-  console.log("id: ", id);
-  const f = topics.filter((v) => v.id === id);
-  return <Article title={f[0].title} body={f[0].body}></Article>;
+  let title,
+    body = "";
+  for (let i = 0; i < props.topics.length; i++) {
+    if (props.topics[i].id === id) {
+      title = props.topics[i].title;
+      body = props.topics[i].body;
+    }
+  }
+  return <Article title={title} body={body}></Article>;
+
+  //   const f = topics.filter((v) => v.id === id);
+  //   return <Article title={f[0].title} body={f[0].body}></Article>;
+}
+
+function Create({ onCreate }) {
+  function SubmitHandler(event) {
+    event.preventDefault();
+    const t = event.target.title.value;
+    const b = event.target.body.value;
+    onCreate(t, b);
+  }
+
+  return (
+    <article>
+      <h1>Create</h1>
+      <form onSubmit={SubmitHandler}>
+        <p>
+          <input type="text" name="title" placeholder="Title"></input>
+        </p>
+        <p>
+          <textarea name="body" placeholder="Body"></textarea>
+        </p>
+        <p>
+          <input type="submit" value="Create"></input>
+        </p>
+      </form>
+    </article>
+  );
 }
 
 function App() {
   console.log("App render");
 
-  let topics = [
+  let [topics, setTopics] = useState([
     { id: 1, title: "html", body: "html is ..." },
     { id: 2, title: "css", body: "css is ..." },
     { id: 3, title: "js", body: "js is ..." },
-  ];
+  ]);
 
-  const [id, setId] = useState(null);
-  console.log("id", id);
+  let [nextId, setNextId] = useState(4);
+
+  function CreateHandler(_title, _body) {
+    const newTopics = [...topics];
+    const newTopic = { id: nextId, title: _title, body: _body };
+    newTopics.push(newTopic);
+    setTopics(newTopics);
+    setNextId(nextId + 1);
+  }
 
   return (
     <>
@@ -70,7 +112,22 @@ function App() {
         ></Route>
         <Route path="/read/:id" element={<Read topics={topics}></Read>}></Route>
         {/* Route에 엘리먼트로 전달된 컴포넌트는 path의 가변 인자를 획득할 수 있다 by useParams Hook*/}
+        <Route
+          path="/create"
+          element={<Create onCreate={CreateHandler}></Create>}
+        ></Route>
       </Routes>
+      <ul>
+        <li>
+          <Link to="/create">Create</Link>
+        </li>
+        <li>
+          <Link to="/update">Update</Link>
+        </li>
+        <li>
+          <input type="button" value="Delete" />
+        </li>
+      </ul>
     </>
   );
 }
