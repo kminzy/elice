@@ -6,7 +6,7 @@
 
 <br><br>
 
-## useEffect
+## 1. useEffect
 
 ### 기본 형태
 
@@ -42,3 +42,32 @@ console.log(add(1));
 ```
 
 컴포넌트에서 `최초 한 번만 실행`해야 하는 로직이 있다면, useEffect를 사용한다.
+
+<br>
+
+## 2. e.preventDefault()
+
+React => CSR => SPA => 페이지 변환이 일어나면 안된다.
+
+```js
+const [user, setUser] = useState({
+  id: "",
+  pw: "",
+});
+
+useEffect(() => {
+  console.log(user);
+}, [user]); // user라는 변수가 실제로 변할 때마다 동작
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  ~~~
+};
+```
+
+<br>
+
+## 3. axios
+
+- axios.post의 두 번째 인자에는 body
+- axios.get은 두 번째 인자에는 바로 header (get요청은 body가 없다.)

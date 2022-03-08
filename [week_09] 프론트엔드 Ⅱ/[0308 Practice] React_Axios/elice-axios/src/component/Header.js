@@ -12,6 +12,9 @@ function Header() {
       <li>
         <Link to="/register">회원가입</Link>
       </li>
+      <li>
+        <Link to="/user">유저 리스트</Link>
+      </li>
     </ul>
   );
 }
