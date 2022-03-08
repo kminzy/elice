@@ -1,6 +1,15 @@
 import "./App.css";
 import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {
+  Button,
+  ButtonGroup,
+  Container,
+  Row,
+  Col,
+  Modal,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Article(props) {
   return (
@@ -15,7 +24,9 @@ function Header(props) {
   return (
     <header>
       <h1>
-        <Link to="/">{props.title}</Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          {props.title}
+        </Link>
       </h1>
     </header>
   );
@@ -206,61 +217,110 @@ function App() {
     refreshTopics();
   }
 
-  function deleteHandler(id) {
-    console.log("id", id);
+  async function deleteHandler(id) {
+    const request = await fetch("http://localhost:4000/topics/" + id, {
+      method: "DELETE",
+    });
+    const response = await request.json();
+    navigate("/");
+    refreshTopics();
   }
 
   return (
-    <>
+    <Container>
       <Header title="React"></Header>
-      <Nav topics={topics}></Nav>
-      <Routes>
-        <Route
-          path="/"
-          element={<Article title="Welcome" body="Hello, WEB"></Article>}
-        ></Route>
-        <Route path="/read/:id" element={<Read topics={topics}></Read>}></Route>
-        <Route
-          path="/create"
-          element={<Create onCreate={createHandler}></Create>}
-        ></Route>
-        <Route
-          path="/update/:id"
-          element={<Update topics={topics} onUpdate={updateHandler}></Update>}
-        ></Route>
-      </Routes>
-      <Routes>
-        <Route path="/" element={<Control></Control>}></Route>
-        <Route
-          path="/read/:id"
-          element={<Control onDelete={deleteHandler}></Control>}
-        ></Route>
-      </Routes>
-    </>
+      <Row>
+        <Col xs={4}>
+          <Nav topics={topics}></Nav>
+        </Col>
+        <Col>
+          <Routes>
+            <Route
+              path="/"
+              element={<Article title="Welcome" body="Hello, WEB"></Article>}
+            ></Route>
+            <Route
+              path="/read/:id"
+              element={<Read topics={topics}></Read>}
+            ></Route>
+            <Route
+              path="/create"
+              element={<Create onCreate={createHandler}></Create>}
+            ></Route>
+            <Route
+              path="/update/:id"
+              element={
+                <Update topics={topics} onUpdate={updateHandler}></Update>
+              }
+            ></Route>
+          </Routes>
+          <Routes>
+            <Route path="/" element={<Control></Control>}></Route>
+            <Route
+              path="/read/:id"
+              element={<Control onDelete={deleteHandler}></Control>}
+            ></Route>
+          </Routes>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
 function Control(props) {
   const params = useParams();
-  console.log("params", params);
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  function handleClose() {
+    setShow(false);
+  }
+
   return (
-    <ul>
-      <li>
-        <Link to="/create">Create</Link>
-      </li>
-      <li>
-        <Link to={"/update/" + params.id}>Update</Link>
-      </li>
-      <li>
-        <input
-          type="button"
-          value="Delete"
+    <>
+      <ButtonGroup>
+        <Button
           onClick={() => {
-            props.onDelete(params.id);
+            navigate("/create");
           }}
-        />
-      </li>
-    </ul>
+        >
+          Create
+        </Button>
+        <Button
+          onClick={() => {
+            navigate("/update/" + params.id);
+          }}
+        >
+          Update
+        </Button>
+        <Button
+          onClick={() => {
+            setShow(true);
+          }}
+        >
+          Delete
+        </Button>
+      </ButtonGroup>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Danger !!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>정말로 삭제하시겠습니까?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              props.onDelete(params.id);
+              handleClose();
+            }}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
 
