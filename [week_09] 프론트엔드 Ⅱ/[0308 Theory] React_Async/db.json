@@ -1,19 +1,29 @@
 {
-  "posts": [
+  "topics": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "html",
+      "body": "html is ...."
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "title": "css",
+      "body": "css is ...."
+    },
+    {
+      "id": 3,
+      "title": "js",
+      "body": "js is ...."
+    },
+    {
+      "title": "hello",
+      "body": "hello body",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "title": "qwerqwer",
+      "body": "qwerqwer"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
