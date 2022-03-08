@@ -15,6 +15,12 @@ function Header() {
       <li>
         <Link to="/user">유저 리스트</Link>
       </li>
+      <li>
+        <Link to="/movie">영화 리스트</Link>
+      </li>
+      <li>
+        <Link to="/python">파이썬</Link>
+      </li>
     </ul>
   );
 }
