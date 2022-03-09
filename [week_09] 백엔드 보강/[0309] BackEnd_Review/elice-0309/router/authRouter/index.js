@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../model/User");
+const jwt = require("jsonwebtoken");
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -20,8 +21,19 @@ router.post("/login", async (req, res) => {
         message: "비밀번호가 존재하지 않습니다.",
       });
     } else {
+      // 로그인 성공
+      const token = jwt.sign(
+        {
+          username,
+        },
+        process.env.JWT_KEY,
+        {
+          expiresIn: "1h",
+        }
+      );
       res.json({
         status: "succ",
+        token,
       });
     }
   } catch (e) {
