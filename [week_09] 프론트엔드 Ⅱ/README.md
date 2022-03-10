@@ -132,3 +132,8 @@ function Child3(props) {
   );
 }
 ```
+
+<br>
+
+## 5. Reducer
+useReducer는 useState처럼 state를 만든다.
