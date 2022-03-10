@@ -72,6 +72,31 @@ const handleSubmit = (e) => {
 - axios.post의 두 번째 인자에는 body
 - axios.get은 두 번째 인자에는 바로 header (get요청은 body가 없다.)
 
+<br>
+
 ## 4. Context
 
 - React에서 전역적으로 상태관리를 할 때 사용
+- Context는 React에서 사용하는 `유사(기능이 더 많은) 전역변수`다.
+
+```jsx
+import { createContext, useContext } from "react";
+
+const themeDefault = {
+  border: "10px solid blue",
+  color: "red",
+};
+
+const themeContext = createContext(themeDefault); // 컨텍스트 생성
+
+function Child3(props) {
+  const theme = useContext(themeContext); // 컨텍스트 사용
+  return (
+    <div style={{ border: theme.border }}>
+      <h1>3</h1>
+    </div>
+  );
+}
+```
+
+- Context의 Provider에 value를 넣으면, 하위 컴포넌트들에게 자동 값 전달
