@@ -14,7 +14,7 @@ function App() {
       case "올려주세요":
         newCount = oldCount + 1;
         break;
-      case "유지해주세요":
+      case "초기화해주세요":
         newCount = 0;
         break;
       case "내려주세요":
@@ -35,7 +35,7 @@ function App() {
   }
 
   function reset() {
-    const action = "유지해주세요";
+    const action = "초기화해주세요";
     dispatchCount(action);
   }
 
