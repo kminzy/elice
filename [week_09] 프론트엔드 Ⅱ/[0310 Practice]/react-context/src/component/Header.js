@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { StateContext } from "../App";
 
 function Header() {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
+
+  const { value, setValue } = useContext(StateContext);
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <div
@@ -19,8 +26,8 @@ function Header() {
           height: "30px",
         }}
         type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
     </div>
   );

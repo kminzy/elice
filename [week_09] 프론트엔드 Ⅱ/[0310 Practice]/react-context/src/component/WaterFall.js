@@ -1,27 +1,32 @@
-function Comp3({ num }) {
-  return <div>App에서 부터 전달 받은 값 {num}</div>;
+import { useContext } from "react";
+import { StateContext } from "../App";
+
+function Comp3() {
+  const { value } = useContext(StateContext);
+
+  return <div>App에서 부터 전달 받은 값 {value}</div>;
 }
 
-function Comp2({ num }) {
+function Comp2() {
   return (
     <div>
-      <Comp3 num={num} />
+      <Comp3 />
     </div>
   );
 }
 
-function Comp1({ num }) {
+function Comp1() {
   return (
     <div>
-      <Comp2 num={num} />
+      <Comp2 />
     </div>
   );
 }
 
-function WaterFall({ num }) {
+function WaterFall() {
   return (
     <div>
-      <Comp1 num={num} />
+      <Comp1 />
     </div>
   );
 }
