@@ -78,6 +78,15 @@ const handleSubmit = (e) => {
 
 - React에서 전역적으로 상태관리를 할 때 사용
 - Context는 React에서 사용하는 `유사(기능이 더 많은) 전역변수`다.
+- 전역 상태 관리할 애들 기준
+  > 1. 전역으로 관리해야 할 것 같은 애들
+  >
+  >    - 테마 다크모드 공통 UI (light / dark)
+  >    - User << 로그인을 했으면 닉네임 유저아이디
+  >
+  > 2. 백엔드에서 오는 `데이터`들은 대체적으로 전역으로 관리될 가능성이 큼
+  >
+  > 3. 백엔드 => 전역으로 redux 관리한다.
 
 ```jsx
 import { createContext, useContext } from "react";
@@ -136,4 +145,5 @@ function Child3(props) {
 <br>
 
 ## 5. Reducer
+
 useReducer는 useState처럼 state를 만든다.

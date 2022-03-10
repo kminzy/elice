@@ -1,14 +1,17 @@
 import { useState, useContext, useEffect } from "react";
-import { StateContext } from "../App";
+import { textState } from "../atom/textState";
+import { useRecoilState } from "recoil";
 
 function Header() {
   // const [search, setSearch] = useState("");
 
-  const { value, setValue } = useContext(StateContext);
+  //const { value, setValue } = useContext(StateContext);
+
+  const [text, setText] = useRecoilState(textState);
 
   useEffect(() => {
-    console.log(value);
-  }, [value]);
+    console.log(text);
+  }, [text]);
 
   return (
     <div
@@ -26,8 +29,8 @@ function Header() {
           height: "30px",
         }}
         type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
       />
     </div>
   );

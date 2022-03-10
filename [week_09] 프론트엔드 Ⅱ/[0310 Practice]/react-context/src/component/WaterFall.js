@@ -1,10 +1,5 @@
-import { useContext } from "react";
-import { StateContext } from "../App";
-
 function Comp3() {
-  const { value } = useContext(StateContext);
-
-  return <div>App에서 부터 전달 받은 값 {value}</div>;
+  return <div>App에서 부터 전달 받은 값 </div>;
 }
 
 function Comp2() {
