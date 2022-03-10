@@ -1,17 +1,27 @@
 import "./App.css";
 import { Link, Routes, Route, useParams, useNavigate } from "react-router-dom";
-import { useState, useReducer } from "react";
+import { useState, useReducer, createContext, useContext } from "react";
+
+const themeDefault = {
+  border: "10px solid gray",
+  margin: 20,
+  padding: 20,
+};
+const themeContext = createContext(themeDefault);
+
 function Article(props) {
+  const theme = useContext(themeContext);
   return (
-    <article>
+    <article style={theme}>
       <h2>{props.title}</h2>
       {props.body}
     </article>
   );
 }
 function Header(props) {
+  const theme = useContext(themeContext);
   return (
-    <header>
+    <header style={theme}>
       <h1>
         <Link to="/">{props.title}</Link>
       </h1>
@@ -19,6 +29,8 @@ function Header(props) {
   );
 }
 function Nav(props) {
+  const theme = useContext(themeContext);
+
   let lis = [];
   for (let i = 0; i < props.topics.length; i++) {
     let t = props.topics[i];
@@ -30,7 +42,7 @@ function Nav(props) {
   }
 
   return (
-    <nav>
+    <nav style={theme}>
       <ol>{lis}</ol>
     </nav>
   );
@@ -172,10 +184,15 @@ function App() {
     // setTopics(newTopics);
     navigate("/read/" + _id);
   }
+  const theme = useContext(themeContext);
+  const newTheme = { ...theme };
+  newTheme.backgroundColor = "yellow";
   return (
     <>
-      <Header title="React"></Header>
-      <Nav topics={topics}></Nav>
+      <themeContext.Provider value={newTheme}>
+        <Header title="React"></Header>
+        <Nav topics={topics}></Nav>
+      </themeContext.Provider>
       <Routes>
         <Route
           path="/"
@@ -200,9 +217,10 @@ function App() {
 }
 function Control() {
   const params = useParams();
+  const theme = useContext(themeContext);
   console.log("params", params);
   return (
-    <ul>
+    <ul style={theme}>
       <li>
         <Link to="/create">Create</Link>
       </li>
