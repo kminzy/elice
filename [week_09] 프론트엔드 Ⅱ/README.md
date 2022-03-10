@@ -71,3 +71,7 @@ const handleSubmit = (e) => {
 
 - axios.post의 두 번째 인자에는 body
 - axios.get은 두 번째 인자에는 바로 header (get요청은 body가 없다.)
+
+## 4. Context
+
+- React에서 전역적으로 상태관리를 할 때 사용
