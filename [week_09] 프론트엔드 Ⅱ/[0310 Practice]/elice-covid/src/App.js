@@ -1,12 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-import CovidMap from "./CovidMap";
+import { RecoilRoot } from "recoil";
+
+import CovidMap from "./component/CovidMap";
+import Area from "./component/Area";
+
 function App() {
   return (
-    <div className="App">
-      <CovidMap />
-    </div>
+    <RecoilRoot>
+      <div className="App">
+        <Area />
+        <CovidMap />
+      </div>
+    </RecoilRoot>
   );
 }
 
