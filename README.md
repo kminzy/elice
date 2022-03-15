@@ -21,4 +21,4 @@
 |[7] 2/22~2/26|- MongoDB<br>- 회원가입 및 로그인 기능 구현<br>- Passport와 Session, 그리고 JWT|💡 **실습**</br>[Express와 MongoDB를 활용한 CRUD](https://github.com/kminzy/elice/blob/main/%5Bweek_07%5D%20%EB%B0%B1%EC%97%94%EB%93%9C%20%E2%85%A1/%5B0224%20Practice%20\(1\)%5D%20Passport/index.js)|[7주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_07%5D%20%EB%B0%B1%EC%97%94%EB%93%9C%20%E2%85%A1/Study.md)|
 |[8] 3/1~3/5|- React.js의 기초<br>- JSX, Components, Props, State<br>- React-Router-DOM<br>- Hook||[8주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_08%5D%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%E2%85%A0/Study.md)|
 |[9] 3/8~3/12|- React에서의 비동기 통신<br>- React에서의 상태관리<br>- 7~8주차 백엔드 보강||[9주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_09%5D%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%E2%85%A1/Study.md)|
-|[10~11]<br/>3/15~3/26|**1차 팀 프로젝트**|||
+|[10-11] 3/15~3/26|**1차 팀 프로젝트**|||
