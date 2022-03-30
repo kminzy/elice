@@ -22,3 +22,4 @@
 |[8] 3/1~3/5|- React.js의 기초<br>- JSX, Components, Props, State<br>- React-Router-DOM<br>- Hook||[8주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_08%5D%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%E2%85%A0/Study.md)|
 |[9] 3/8~3/12|- React에서의 비동기 통신<br>- React에서의 상태관리<br>- 7~8주차 백엔드 보강|💡 **실습**</br>[React를 활용한 Covid Map](https://github.com/kminzy/elice/tree/main/%5Bweek_09%5D%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%E2%85%A1/%5B0310%20Practice%5D%20React_State/elice-covid)|[9주차 스터디](https://github.com/kminzy/elice/blob/main/%5Bweek_09%5D%20%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C%20%E2%85%A1/Study.md)|
 |[10-11] 3/15~3/26|**1차 팀 프로젝트**|||
+|[12] 3/29~4/2|- 빅데이터 처리를 위한 파이썬 문법|||
